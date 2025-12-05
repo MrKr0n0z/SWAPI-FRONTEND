@@ -30,8 +30,6 @@ const LoginPage = () => {
       localStorage.removeItem('accessToken');
       localStorage.removeItem('user');
       
-      console.log('Enviando datos:', formData);
-      
       // Crear petición especial para login completamente limpia
       const response = await axios.post('http://127.0.0.1:8000/api/auth/login', formData, {
         headers: {
@@ -42,9 +40,6 @@ const LoginPage = () => {
         timeout: 10000,
       });
       
-      console.log('Respuesta completa:', response);
-      console.log('Datos de respuesta:', response.data);
-      
       // Guardar token y usuario en localStorage (estructura correcta de tu API)
       localStorage.setItem('accessToken', response.data.data.token);
       localStorage.setItem('user', JSON.stringify(response.data.data.user));
@@ -52,8 +47,6 @@ const LoginPage = () => {
       // Redirigir al home
       navigate('/');
     } catch (err) {
-      console.error('Login error:', err);
-      
       if (err.code === 'ERR_NETWORK') {
         setError('Error de conexión. Verifica que la API esté ejecutándose en http://127.0.0.1:8000');
       } else if (err.response?.status === 405) {
