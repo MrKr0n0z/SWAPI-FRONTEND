@@ -3,6 +3,7 @@ import LoginPage from './pages/LoginPage';
 import HomePage from './pages/HomePage';
 import EntityList from './pages/EntityList';
 import EntityDetail from './pages/EntityDetail';
+import SyncPage from './pages/SyncPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
@@ -40,6 +41,15 @@ function App() {
             element={
               <ProtectedRoute>
                 <EntityDetail />
+              </ProtectedRoute>
+            } 
+          />
+          {/* Ruta de sincronización */}
+          <Route 
+            path="/sync" 
+            element={
+              <ProtectedRoute>
+                <SyncPage />
               </ProtectedRoute>
             } 
           />

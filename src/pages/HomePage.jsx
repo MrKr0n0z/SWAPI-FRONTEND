@@ -80,6 +80,14 @@ const HomePage = () => {
             ))}
           </div>
         </div>
+
+        <div className="sync-section">
+          <Link to="/sync" className="sync-card">
+            <div className="sync-icon">🌌</div>
+            <h4>Sincronización Galáctica</h4>
+            <p>Busca y sincroniza datos desde SWAPI</p>
+          </Link>
+        </div>
       </main>
     </div>
   );

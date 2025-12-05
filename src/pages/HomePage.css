@@ -106,3 +106,40 @@
   margin: 0;
   font-size: 1.25rem;
 }
+
+.sync-section {
+  margin-top: 3rem;
+  text-align: center;
+}
+
+.sync-card {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+}
+
+.sync-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+}
+
+.sync-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.sync-card h4 {
+  margin: 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.sync-card p {
+  margin: 0.5rem 0 0 0;
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
