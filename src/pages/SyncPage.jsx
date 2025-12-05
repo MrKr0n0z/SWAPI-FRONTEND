@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import apiClient from '../api/axios';
 import './SyncPage.css';
@@ -11,6 +11,8 @@ const SyncPage = () => {
   const [data, setData] = useState(null);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [listItems, setListItems] = useState([]);
+  const [listLoading, setListLoading] = useState(false);
 
   const entities = [
     { value: 'people', label: 'Personas' },
@@ -20,6 +22,30 @@ const SyncPage = () => {
     { value: 'starships', label: 'Naves' },
     { value: 'vehicles', label: 'Vehículos' },
   ];
+
+  const fetchList = async (selectedEntity) => {
+    setListLoading(true);
+    try {
+      const response = await axios.get(`https://swapi.dev/api/${selectedEntity}/?page=1`);
+      const mapped = (response.data?.results || []).map((item) => {
+        const match = item.url?.match(/\/(\d+)\/?$/);
+        return { ...item, __id: match ? match[1] : 'N/A' };
+      });
+      setListItems(mapped);
+    } catch (err) {
+      setListItems([]);
+      setError('Error al cargar la lista de ' + selectedEntity);
+    } finally {
+      setListLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchList(entity);
+    setId('');
+    setData(null);
+    setSuccess(false);
+  }, [entity]);
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -80,6 +106,13 @@ const SyncPage = () => {
     }
   };
 
+  const handleSelectItem = (item) => {
+    setError('');
+    setSuccess(false);
+    setId(item.__id || '');
+    setData(item);
+  };
+
   const getTitle = () => {
     return data?.name || data?.title || 'Elemento de SWAPI';
   };
@@ -94,6 +127,20 @@ const SyncPage = () => {
             Busca datos en SWAPI y sincronízalos con tu base de datos local
           </p>
         </div>
+      </div>
+
+      {/* Entity Tabs */}
+      <div className="sync-tabs" role="tablist">
+        {entities.map((ent) => (
+          <button
+            key={ent.value}
+            type="button"
+            className={`sync-tab ${entity === ent.value ? 'active' : ''}`}
+            onClick={() => setEntity(ent.value)}
+          >
+            {ent.label}
+          </button>
+        ))}
       </div>
 
       {/* Main Content */}
@@ -171,6 +218,46 @@ const SyncPage = () => {
           </form>
         </div>
 
+        {/* Catálogo por entidad */}
+        <div className="sync-catalog">
+          <div className="sync-catalog-header">
+            <h3>Catálogo de {entities.find((e) => e.value === entity)?.label}</h3>
+            <p>Selecciona un elemento para previsualizar y sincronizar</p>
+          </div>
+
+          {listLoading && (
+            <div className="sync-grid-loading">
+              <div className="sync-skeleton-card" />
+              <div className="sync-skeleton-card" />
+              <div className="sync-skeleton-card" />
+            </div>
+          )}
+
+          {!listLoading && listItems.length === 0 && (
+            <p className="sync-catalog-empty">No hay elementos para mostrar.</p>
+          )}
+
+          <div className="sync-grid">
+            {listItems.map((item) => (
+              <div key={item.__id} className="sync-mini-card">
+                <div className="sync-mini-id">ID: {item.__id}</div>
+                <h4 className="sync-mini-title">{item.name || item.title}</h4>
+                <div className="sync-mini-meta">
+                  <span>{item.gender || item.director || item.model || 'Detalle'}</span>
+                  <span>{item.birth_year || item.release_date || item.manufacturer || ''}</span>
+                </div>
+                <button
+                  type="button"
+                  className="sync-mini-button"
+                  onClick={() => handleSelectItem(item)}
+                >
+                  Ver detalle
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+
         {/* Results Area */}
         <div className="sync-results">
           {!data && !loading && (
@@ -178,7 +265,7 @@ const SyncPage = () => {
               <div className="sync-empty-icon">📡</div>
               <p className="sync-empty-text">Esperando transmisión...</p>
               <p className="sync-empty-subtext">
-                Busca un elemento para ver una vista previa
+                Selecciona una tarjeta o busca por ID para ver una vista previa
               </p>
             </div>
           )}

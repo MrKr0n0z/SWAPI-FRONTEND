@@ -2,7 +2,7 @@
   min-height: 100vh;
   width: 100%;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-  padding: 10rem 0 0 0;
+  padding: 5rem 0 0 0;
 }
 
 /* Header */
@@ -37,7 +37,56 @@
 .sync-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 2rem 4rem 2rem;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.sync-tabs {
+  display: flex;
+  gap: 1rem;
+  padding: 2rem;
+  margin: 0;
+  background: rgba(30, 41, 59, 0.95);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  z-index: 50;
+}
+
+.sync-tab {
+  background: rgba(71, 85, 105, 0.4);
+  color: #e2e8f0;
+  border: 2px solid #64748b;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.sync-tab.active {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: #ffffff;
+  border-color: #a78bfa;
+  box-shadow: 0 8px 20px rgba(79, 70, 229, 0.6);
+  transform: scale(1.05);
+}
+
+.sync-tab:hover {
+  border-color: #a78bfa;
+  color: #ffffff;
+  background: rgba(99, 102, 241, 0.2);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.35);
 }
 
 /* Toast Notifications */
@@ -99,6 +148,102 @@
               0 10px 10px -5px rgba(0, 0, 0, 0.2);
   margin-bottom: 2rem;
   transition: all 0.3s ease;
+}
+
+.sync-catalog {
+  margin: 1.5rem 0 2rem 0;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(148, 163, 184, 0.15);
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+.sync-catalog-header h3 {
+  color: #e2e8f0;
+  margin: 0 0 0.25rem 0;
+}
+
+.sync-catalog-header p {
+  color: #cbd5e1;
+  margin: 0 0 1rem 0;
+}
+
+.sync-grid-loading {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.sync-skeleton-card {
+  height: 150px;
+  background: linear-gradient(90deg, #1f2937 25%, #273449 50%, #1f2937 75%);
+  background-size: 200% 100%;
+  border-radius: 12px;
+  animation: shimmer 2s infinite;
+}
+
+.sync-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.sync-mini-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  transition: all 0.25s ease;
+}
+
+.sync-mini-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 28px -6px rgba(79, 70, 229, 0.25);
+  border-color: #c7d2fe;
+}
+
+.sync-mini-id {
+  font-size: 0.85rem;
+  color: #6366f1;
+  font-weight: 700;
+  margin-bottom: 0.35rem;
+}
+
+.sync-mini-title {
+  margin: 0 0 0.35rem 0;
+  color: #0f172a;
+}
+
+.sync-mini-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  color: #475569;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+.sync-mini-button {
+  width: 100%;
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  color: white;
+  border: none;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.sync-mini-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px -6px rgba(79, 70, 229, 0.3);
+}
+
+.sync-catalog-empty {
+  color: #94a3b8;
+  margin: 0;
 }
 
 .sync-panel-title {
