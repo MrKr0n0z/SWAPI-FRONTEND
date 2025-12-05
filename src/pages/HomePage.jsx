@@ -23,12 +23,6 @@ const HomePage = () => {
     }
   }, [navigate]);
 
-  const handleLogout = () => {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('user');
-    navigate('/login');
-  };
-
   const formatDate = (dateString) => {
     if (!dateString) return 'No disponible';
     return new Date(dateString).toLocaleString('es-ES');
@@ -50,9 +44,6 @@ const HomePage = () => {
       <header className="home-header">
         <div className="header-content">
           <h1>SWAPI Client</h1>
-          <button onClick={handleLogout} className="logout-button">
-            Cerrar Sesión
-          </button>
         </div>
       </header>
 
