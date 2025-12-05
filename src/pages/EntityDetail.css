@@ -1,0 +1,133 @@
+.detail-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+.detail-header {
+  background: white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem 0;
+}
+
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.back-link {
+  color: #667eea;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.back-link:hover {
+  color: #5a6fd8;
+}
+
+.detail-header h1 {
+  color: #2d3748;
+  margin: 0;
+  font-size: 2rem;
+}
+
+.detail-main {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.detail-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.detail-card h2 {
+  color: #2d3748;
+  margin-bottom: 2rem;
+  font-size: 1.5rem;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 1rem;
+}
+
+.detail-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+.detail-item {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1rem;
+  align-items: start;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 5px;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.detail-value {
+  color: #4a5568;
+  word-break: break-word;
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-size: 1.25rem;
+  color: #4a5568;
+}
+
+.error-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.error-message {
+  color: #e53e3e;
+  background: #fed7d7;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.back-button {
+  background: #667eea;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.back-button:hover {
+  background: #5a6fd8;
+}
+
+@media (max-width: 768px) {
+  .detail-item {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  
+  .detail-label {
+    margin-bottom: 0.25rem;
+  }
+}
