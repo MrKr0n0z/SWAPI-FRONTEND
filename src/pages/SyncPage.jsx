@@ -160,64 +160,6 @@ const SyncPage = () => {
           </div>
         )}
 
-        {/* Search Panel */}
-        <div className="sync-panel">
-          <h2 className="sync-panel-title">Búsqueda</h2>
-          
-          <form onSubmit={handleSearch} className="sync-form">
-            {/* Entity Select */}
-            <div className="sync-form-group">
-              <label htmlFor="entity" className="sync-label">
-                Entidad
-              </label>
-              <select
-                id="entity"
-                value={entity}
-                onChange={(e) => setEntity(e.target.value)}
-                className="sync-select"
-              >
-                {entities.map((ent) => (
-                  <option key={ent.value} value={ent.value}>
-                    {ent.label}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* ID Input */}
-            <div className="sync-form-group">
-              <label htmlFor="id" className="sync-label">
-                ID
-              </label>
-              <input
-                id="id"
-                type="number"
-                value={id}
-                onChange={(e) => setId(e.target.value)}
-                placeholder="Ej: 1"
-                className="sync-input"
-                disabled={loading}
-              />
-            </div>
-
-            {/* Search Button */}
-            <button
-              type="submit"
-              disabled={loading}
-              className="sync-button-search"
-            >
-              {loading ? (
-                <>
-                  <span className="sync-spinner"></span>
-                  Buscando...
-                </>
-              ) : (
-                <>🔍 Buscar</>
-              )}
-            </button>
-          </form>
-        </div>
-
         {/* Catálogo por entidad */}
         <div className="sync-catalog">
           <div className="sync-catalog-header">

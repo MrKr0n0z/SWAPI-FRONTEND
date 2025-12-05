@@ -2,7 +2,7 @@
   min-height: 100vh;
   width: 100%;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-  padding: 5rem 0 0 0;
+  padding: 350px 0 0 0;
 }
 
 /* Header */
@@ -10,7 +10,8 @@
   background: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
   border-bottom: 1px solid rgba(148, 163, 184, 0.2);
   padding: 3rem 1rem;
-  margin-bottom: 2rem;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .sync-header-content {
@@ -36,7 +37,7 @@
 /* Container */
 .sync-container {
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 2rem auto 0 auto;
   padding: 2rem;
   position: relative;
   z-index: 1;
@@ -45,33 +46,30 @@
 .sync-tabs {
   display: flex;
   gap: 1rem;
-  padding: 2rem;
+  padding: 1rem 2rem;
   margin: 0;
   background: rgba(30, 41, 59, 0.95);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
-  border-top: 1px solid rgba(148, 163, 184, 0.3);
+  border-bottom: 2px solid rgba(148, 163, 184, 0.3);
   flex-wrap: wrap;
   justify-content: center;
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-  z-index: 50;
+  width: 100%;
+  position: sticky;
+  top: 70px;
+  z-index: 999;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
 }
 
 .sync-tab {
   background: rgba(71, 85, 105, 0.4);
   color: #e2e8f0;
   border: 2px solid #64748b;
-  padding: 0.75rem 1.5rem;
+  padding: 0.5rem 1rem;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   white-space: nowrap;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .sync-tab.active {
@@ -147,7 +145,10 @@
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
               0 10px 10px -5px rgba(0, 0, 0, 0.2);
   margin-bottom: 2rem;
+  margin-top: 2rem;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 5;
 }
 
 .sync-catalog {
